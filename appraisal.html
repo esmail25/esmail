@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Domain Appraisal</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  input {
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 25px;
+    border: 1.5px solid #ccc;
+    margin-right: 10px;
+  }
+  button {
+    padding: 10px 18px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-right: 10px;
+    background: #0078d7;
+    color: white;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #005ea2;
+  }
+</style>
+</head>
+<body>
+
+<h1>Domain Appraisal</h1>
+
+<input type="text" id="domainInput" placeholder="Enter domain e.g. example.com" />
+<br>
+<br>
+<br>
+<br>
+<div>
+  <button id="dynadotBtn">Open Dynadot Appraisal</button>
+  <button id="humbleBtn">Open HumbleWorth Appraisal</button>
+  <button id="godaddyBtn">Open GoDaddy Appraisal</button>
+</div>
+
+<script>
+  function cleanDomain(domain) {
+    domain = domain.trim().toLowerCase();
+    domain = domain.replace(/^https?:\/\//, '');
+    domain = domain.replace(/\/$/, '');
+    return domain;
+  }
+
+  document.getElementById('dynadotBtn').addEventListener('click', () => {
+    const domain = cleanDomain(document.getElementById('domainInput').value);
+    if (!domain) return alert('Please enter a domain.');
+    window.open(`https://www.dynadot.com/domain/appraisal?domain=${encodeURIComponent(domain)}`, '_blank');
+  });
+
+  document.getElementById('humbleBtn').addEventListener('click', () => {
+    const domain = cleanDomain(document.getElementById('domainInput').value);
+    if (!domain) return alert('Please enter a domain.');
+    window.open(`https://humbleworth.com/valuation/single?domain=${encodeURIComponent(domain)}`, '_blank');
+  });
+
+  document.getElementById('godaddyBtn').addEventListener('click', () => {
+    const domain = cleanDomain(document.getElementById('domainInput').value);
+    if (!domain) return alert('Please enter a domain.');
+    window.open(`https://fr.godaddy.com/domain-value-appraisal/appraisal/?domainToCheck=${encodeURIComponent(domain)}`, '_blank');
+  });
+</script>
+
+</body>
+</html>
